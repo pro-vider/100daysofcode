@@ -1,0 +1,31 @@
+https://practice.geeksforgeeks.org/problems/equilibrium-point-1587115620/1/?track=dsa-workshop-1-arrays&batchId=308
+
+
+int equilibriumPoint(long long arr[], int n) {
+    
+        // Your code here
+        int lsum=0,sum=0;
+        
+        if(n==1)
+        {
+            return 1;
+        }
+        else{
+            for(int i=0;i<n;i++)
+            {
+                sum=sum+arr[i];
+            }
+            for(int i=0;i<n;i++)
+            {    
+                sum=sum-arr[i];
+                if(lsum==sum)
+                {
+                    return i+1;
+                    break;
+                }
+                lsum=lsum+arr[i];
+                
+            }
+        }
+        return -1;
+    }
