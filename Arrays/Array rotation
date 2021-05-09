@@ -1,0 +1,31 @@
+USING REVERSE LOGIC...
+https://practice.geeksforgeeks.org/problems/rotate-array-by-n-elements-1587115621/1/?track=dsa-workshop-1-arrays&batchId=308
+
+
+
+class Solution{
+    public:
+    
+    //Function to rotate an array by d elements in counter-clockwise direction. 
+    void rev(int arr[],int i ,int j){
+        int temp;
+        temp=arr[i];
+        while(i<j)
+        {
+            temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+            i++;
+            j--;
+        }
+        
+        
+    }
+    void rotateArr(int arr[], int d, int n){
+        
+        // code here
+        rev(arr,0,d-1);
+        rev(arr,d,n-1);
+        rev(arr,0,n-1);
+    }
+};
