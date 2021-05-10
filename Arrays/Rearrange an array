@@ -1,0 +1,16 @@
+Rearrange an array with O(1) space complexity so that the modified array a[i] becomes a[a[i]]..
+
+https://practice.geeksforgeeks.org/problems/rearrange-an-array-with-o1-extra-space3142/1/?track=dsa-workshop-1-arrays&batchId=308#
+
+    void arrange(long long arr[], int n) {
+        // Your code here
+        
+            for(int i=0;i<n;i++)
+            
+                arr[i]=arr[i]+(arr[arr[i]] %n)*n;
+            
+            for(int i=0;i<n;i++)
+                arr[i]/=n;
+              
+        
+    }
