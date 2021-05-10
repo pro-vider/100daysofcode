@@ -1,0 +1,28 @@
+https://practice.geeksforgeeks.org/problems/plus-one/0/?track=md-arrays&batchId=144
+
+vector<int> increment(vector<int> arr ,int N) {
+        // code here
+        vector<int> v;
+        
+        int sum = (arr[N - 1] + 1) % 10;
+        int carry = (arr[N - 1] + 1) / 10;
+        
+        v.push_back(sum);
+        
+        for(int i = N - 2; i >= 0; i--)
+        {
+            sum = (arr[i] + carry) % 10;
+            carry = (arr[i] + carry) / 10;
+            
+            v.push_back(sum);
+        }
+        
+        if(carry != 0)
+        {
+            v.push_back(carry);
+        }
+        
+        reverse(v.begin(), v.end());
+        
+        return v;
+    }
