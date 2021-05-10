@@ -1,0 +1,16 @@
+https://practice.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/0/?track=dsa-workshop-1-arrays&batchId=308
+
+  int maxSubarraySum(int arr[], int n){
+        
+        // Your code here
+    int tillnow = arr[0];
+    int curr = arr[0];
+
+   for (int i = 1; i < n; i++)
+   {
+       curr = max(arr[i], curr+arr[i]);
+       tillnow = max(tillnow, curr);
+    }
+    return tillnow;
+        
+    }
