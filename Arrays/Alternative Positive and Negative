@@ -1,0 +1,37 @@
+https://practice.geeksforgeeks.org/problems/array-of-alternate-ve-and-ve-nos1401/1/?track=md-arrays&batchId=144
+
+	void rearrange(int arr[], int n) {
+	    // code here
+	   int pos[n],neg[n];
+	    int p=0,ne=0,x=0,y=0,c=0;
+	   for(int i=0;i<n;i++)
+	   {
+	       if(arr[i]>=0)
+	       {
+	           pos[p]=arr[i];
+	           p++;
+	       }
+	       else
+	       {
+	           neg[ne]=arr[i];
+	           ne++;
+	       }
+	   }
+	   while(x<p && y<ne)
+	   {
+	       if(c%2==0)
+	       {
+	           arr[c]=pos[x];
+	           x++;
+	       }
+	       else{
+	           arr[c]=neg[y];
+	           y++;
+	       }
+	       c++;
+	   }
+	   for(int i=x;i<p;i++)
+	      arr[c++]=pos[i];
+	   for(int i=y;i<ne;i++)
+	      arr[c++]=neg[i];
+	}
