@@ -1,0 +1,42 @@
+https://practice.geeksforgeeks.org/problems/max-circular-subarray-sum-1587115620/0/?track=md-arrays&batchId=144
+
+int circularSubarraySum(int arr[], int num){
+        
+        // your code here
+        int curs=0,maxs=INT_MIN;
+        for(int i=0;i<num;i++)
+        {
+            curs+=arr[i];
+            if(curs>maxs)
+                maxs=curs;
+            if(curs<0) 
+                curs=0;
+        }
+       // return maxs;
+        int suma=0;
+        for(int i=0;i<num;i++){
+            suma+=arr[i];
+        }
+        //return suma;
+        int curm=0;
+        int minm=INT_MAX;
+        for(int i=0;i<num;i++)
+        {
+            curm+=arr[i];
+            if(curm<minm)
+                minm=curm;
+            if(curm>0)
+                curm=0;
+        }
+        //return minm;
+        suma=suma-minm;
+        //return suma;
+        
+        if(suma==0)
+        {
+            return maxs;
+        }
+        else{
+            return max(suma,maxs);
+        }
+    }
