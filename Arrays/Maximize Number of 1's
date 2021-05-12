@@ -1,0 +1,19 @@
+https://practice.geeksforgeeks.org/problems/maximize-number-of-1s0905/0/?track=md-arrays&batchId=144#
+
+int findZeroes(int arr[], int n, int m) {
+        // code here
+        int start=0,zero=0,max1=0;
+        for(int i=0;i<n;i++)
+        {
+            if(arr[i]==0)
+               zero++;
+            while(zero>m)
+            {
+                if(arr[start]==0)
+                   zero--;
+                start++;   
+            }
+            max1=max(max1,i-start+1);
+        }
+        return max1;
+    }  
