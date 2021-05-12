@@ -1,0 +1,24 @@
+https://practice.geeksforgeeks.org/problems/longest-consecutive-subsequence2449/0/?track=md-arrays&batchId=144
+
+int findLongestConseqSubseq(int arr[], int N)
+    {
+      //Your code here
+      int maxsub=0;
+      int h[100007]={0};
+      for(int i=0;i<N;i++)
+      {
+          h[arr[i]]=1;
+      }
+      int c=0;
+      for(int i=0;i<100007;i++){
+          if(h[i]>0)
+          {
+              c++;
+          }
+          else{
+              maxsub=max(c,maxsub);
+              c=0;
+          }
+       }
+       return maxsub;
+    }
