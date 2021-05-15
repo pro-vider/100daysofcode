@@ -1,0 +1,33 @@
+https://practice.geeksforgeeks.org/problems/intersection-of-two-sorted-array-1587115620/1/?track=dsa-workshop-1-search-sort&batchId=308
+
+vector<int> printIntersection(int arr1[], int arr2[], int N, int M) 
+    { 
+        //Your code here
+        int i=0,j=0;
+        vector<int> res;
+        while(i<N && j<M)
+        {
+            if(arr1[i]==arr2[j])
+            {
+                if(arr1[i]==arr1[i+1] && arr2[j]==arr2[j+1])
+                {
+                    i++;
+                    j++;
+                    continue;
+                }
+                res.push_back(arr1[i]);
+                i++;
+                j++;
+            }
+            else if(arr1[i]>arr2[j])
+            {
+                j++;
+            }
+            else if(arr1[i]<arr2[j])
+            {
+                i++;
+            }
+        }
+        return res;
+        
+    }
