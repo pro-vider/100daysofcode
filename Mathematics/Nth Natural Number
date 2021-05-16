@@ -1,0 +1,17 @@
+https://practice.geeksforgeeks.org/problems/nth-natural-number/1/?track=30-DOC-day-2&batchId=320#
+
+long long findNth(long long N)
+    {
+        // code here.
+        long long int ans=0,mul=1,dig;
+        if(N<=0)
+           return 0;
+        while(N)
+        {
+            dig=N%9;
+            ans+=(dig*mul);
+            mul*=10;
+            N/=9;
+        }
+        return ans;
+    }
