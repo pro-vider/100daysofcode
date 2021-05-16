@@ -1,0 +1,28 @@
+https://practice.geeksforgeeks.org/problems/median-of-two-sorted-arrays1618/1/?track=dsa-workshop-1-search-sort&batchId=308#
+
+int findMedian(int arr[], int n, int brr[], int m)
+    {
+        // code here
+        int low = 0, high = n;
+        while(low <= high){
+            int i = (low+high)/2;
+            int j = (n+m+1)/2-i;
+            int min1 = (i == n)?INT_MAX:arr[i];
+            int max1 = (i == 0)?INT_MIN:arr[i-1];
+            
+            int min2 = (j == m)?INT_MAX:brr[j];
+            int max2 = (j == 0)?INT_MIN:brr[j-1];
+            
+            if(max1<=min2 && max2<=min1){
+                if( (n+m)%2 == 0)
+                    return (double) (max(max1, max2) + min(min1, min2))/2;
+                else
+                    return ( double(max(max1, max2)));
+            }
+            else if(max1 > min2)
+                high = i-1;
+            else
+                low = i+1;
+        }
+        return -1;
+    }
