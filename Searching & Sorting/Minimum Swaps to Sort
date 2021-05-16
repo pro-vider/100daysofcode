@@ -1,0 +1,26 @@
+https://practice.geeksforgeeks.org/problems/minimum-swaps/1/?track=dsa-workshop-1-search-sort&batchId=308
+
+//NUMBERS ARE NON CONSECUTIVE
+
+int minSwaps(vector<int>&nums)
+	{
+	    // Code here
+	     // Code here
+	    int n = nums.size();
+	    int ans = 0;
+	    vector<pair<int, int>> v(n);
+	    for(int i=0; i<n; i++){
+	        v[i] = {nums[i], i};
+	    }
+	    sort(v.begin(), v.end());
+	    for(int i=0; i<n; i++){
+	        if(v[i].second == i){
+	            continue;
+	        }else{
+	            ans++;
+	            swap(v[i], v[v[i].second]);
+	            i--;
+	        }
+	    }
+	    return ans;
+	}
