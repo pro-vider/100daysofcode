@@ -1,0 +1,25 @@
+https://practice.geeksforgeeks.org/problems/even-subsets/1/?track=module-2-arrays-and-strings&batchId=113#
+
+ int countSumSubsets(int arr[], int N){
+        
+        // Your code here
+        unsigned int pow_set_size = pow(2, N);
+        int counter, j;
+        int res=0,sum=0;
+
+        for(counter = 0; counter < pow_set_size; counter++)
+        { 
+            sum=0;
+            for(j = 0; j < N; j++)
+            {
+                if(counter & (1 << j))
+                {
+                    sum=sum+arr[j];}
+                }
+                if(sum%2==0)
+                {
+                    res++;
+                }
+            }
+        return res-1;
+    }
