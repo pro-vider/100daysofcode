@@ -1,0 +1,38 @@
+https://practice.geeksforgeeks.org/problems/determinant-of-a-matrix-1587115620/0/?track=dsa-workshop-1-matrix&batchId=308
+
+int determinantOfMatrix(vector<vector<int> > matrix, int n)
+    {
+    int det = 0; // the determinant value will be stored here
+    if (matrix.size() == 1)
+    {
+        return matrix[0][0]; // no calculation needed
+    }
+    else if (matrix.size() == 2)
+    {
+        det = (matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0]);
+        return det;
+    }
+    else
+    {
+        for (int p = 0; p < matrix[0].size(); p++)
+        {
+            vector<vector<int>> TempMatrix;
+            for (int i = 1; i < matrix.size(); i++)
+            {
+                vector<int> TempRow;
+                for (int j = 0; j < matrix[i].size(); j++)
+                {
+                    if (j != p)
+                    {
+                        TempRow.push_back(matrix[i][j]);
+                    }
+                }
+                    if (TempRow.size() > 0)
+                        TempMatrix.push_back(TempRow);
+            }
+                det = det + matrix[0][p] * pow(-1, p) * determinantOfMatrix(TempMatrix,matrix.size());
+        }
+        return det;
+   }
+   
+}
