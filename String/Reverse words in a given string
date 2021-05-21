@@ -1,0 +1,23 @@
+https://practice.geeksforgeeks.org/problems/reverse-words-in-a-given-string5459/1/?track=dsa-workshop-1-strings&batchId=308#
+
+string reverseWords(string S) 
+    { 
+        // code here 
+        string res("");
+        int i=S.size()-1;
+        while(i>=0)
+        {
+            string temp("");
+            while(i>=0 && S[i]!='.')
+            {
+                temp.push_back(S[i]);
+                --i;
+            }
+            reverse(temp.begin(),temp.end());
+            temp.push_back('.');
+            res+=temp;
+            --i;
+        }
+        res.pop_back();
+        return res;
+    } 
