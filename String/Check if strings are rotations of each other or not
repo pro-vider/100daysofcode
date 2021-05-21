@@ -1,0 +1,28 @@
+https://practice.geeksforgeeks.org/problems/check-if-strings-are-rotations-of-each-other-or-not-1587115620/1/?track=dsa-workshop-1-strings&batchId=308#
+
+bool areRotations(string s1,string s2)
+    {
+        // Your code here
+        if(s1.length()!=s2.length())
+        {
+            return false;
+        }
+        s1=s1+s1;
+        int len1=s1.length();
+        int len2=s2.length();
+        
+       
+        for(int i=0;i<=len1-len2;i++)
+        {
+            int j;
+            for(j=0;j<len2;j++)
+            {
+                if(s1[i+j]!=s2[j])
+                     break;
+            }
+            if(j==len2)
+               // cout<<i;
+                return true;
+        }
+        return false;
+    }
