@@ -1,0 +1,22 @@
+https://practice.geeksforgeeks.org/problems/implement-strstr/1/?track=dsa-workshop-1-strings&batchId=308
+
+int strstr(string s, string x)
+{
+     //Your code here
+     int len1=s.length();
+     int len2=x.length();
+     for(int i=0;i<=len1-len2;i++)
+     {
+         int j;
+         for(j=0;j<len2;j++)
+         {
+             if(s[i+j]!=x[j])
+                break;
+        }
+        if(j==len2)
+        {
+            return i;
+        }
+     }
+     return -1;
+}
