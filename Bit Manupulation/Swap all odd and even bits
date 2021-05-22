@@ -1,0 +1,13 @@
+https://practice.geeksforgeeks.org/problems/swap-all-odd-and-even-bits-1587115621/1/?track=dsa-workshop-1-bit-magic&batchId=308
+
+unsigned int swapBits(unsigned int n)
+    {
+    	// Your code here
+    	int odd=0x55555555;
+    	int even=~odd;
+    	odd=n&odd;
+    	even=n&even;
+    	odd=odd<<1;
+    	even=even>>1;
+    	return odd|even;
+    }
