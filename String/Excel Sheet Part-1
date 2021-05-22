@@ -1,0 +1,16 @@
+https://practice.geeksforgeeks.org/problems/excel-sheet5448/0/?track=dsa-workshop-1-strings&batchId=308
+
+string ExcelColumn(int n)
+    {
+        // Your code goes here
+        n=n-1;
+        string ans="";
+        ans+=char('A'+n%26);
+        n=n/26;
+        while(n>0)
+        {
+            ans=char('A'+(n-1)%26)+ans;
+            n=(n-1)/26;
+        }
+        return ans;
+    }
