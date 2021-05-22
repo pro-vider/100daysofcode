@@ -1,0 +1,29 @@
+https://practice.geeksforgeeks.org/problems/longest-substring-without-repeating-characters/1/?track=dsa-workshop-1-strings&batchId=308
+
+int SubsequenceLength (string s) 
+    {
+        // Your code goes here
+        int a[26] = {0};
+        int i = 0;
+        int j = 0;
+        int m = INT_MIN;
+        if(s.length()==0)
+        {
+            return 0;
+        }
+        while (j < s.length())
+        {
+            if (a[s[j] - 'a'] != 0)
+            {
+                a[s[i]-'a']=0;
+                i++;
+            }
+            else
+            {
+                a[s[j] - 'a'] = 1;
+                m = max(m, j - i + 1);
+                j++;
+            }
+        }
+        return m;
+    }
