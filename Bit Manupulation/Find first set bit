@@ -1,0 +1,7 @@
+https://practice.geeksforgeeks.org/problems/find-first-set-bit-1587115620/1/?track=dsa-workshop-1-bit-magic&batchId=308
+
+unsigned int getFirstSetBit(int n)
+    {
+        // Your code here
+        return log2(n&(-n))+1;
+    }
