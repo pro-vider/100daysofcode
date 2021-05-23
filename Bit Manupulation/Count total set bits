@@ -1,0 +1,10 @@
+https://practice.geeksforgeeks.org/problems/count-total-set-bits-1587115620/0/?track=dsa-workshop-1-bit-magic&batchId=308
+
+int countSetBits(int n)
+    {
+        // Your logic here
+        if(n==0)
+           return 0;
+        int p=(log2(n));
+        return((p*pow(2,p-1)) +(n-pow(2,p)+1)+countSetBits(n-pow(2,p)));
+    }
