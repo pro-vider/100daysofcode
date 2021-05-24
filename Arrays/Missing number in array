@@ -1,0 +1,11 @@
+https://practice.geeksforgeeks.org/problems/missing-number-in-array1416/1/?track=MD-Math&batchId=144#
+
+int MissingNumber(vector<int>& array, int n) {
+        // Your code goes here
+        int res=0;
+        for(int i=1;i<=n;i++)
+           res=res^i;
+        for(int &x:array)
+           res=res^x;
+        return res;   
+    }
