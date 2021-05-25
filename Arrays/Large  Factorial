@@ -1,0 +1,17 @@
+https://practice.geeksforgeeks.org/problems/large-factorial4721/1/?track=md-arrays&batchId=144#
+
+vector<long long> factorial(vector<long long> a, int n) {
+        vector<long long> res;
+        vector<long long> f;
+        long long max=*max_element(a.begin(),a.end());
+        f.push_back(1);
+        for(int i=1;i<=max;i++)
+        {
+            f.push_back((f[i-1]*i) %1000000007);
+        }
+        for(int i=0;i<n;i++)
+        {
+            res.push_back(f[a[i]]);
+        }
+        return res;
+    }
