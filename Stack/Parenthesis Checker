@@ -1,0 +1,49 @@
+https://practice.geeksforgeeks.org/problems/parenthesis-checker2744/1/?track=dsa-workshop-1-stack&batchId=308#
+
+bool ispar(string x)
+    {
+        // Your code here
+        int len=x.size();
+        stack <char> st;
+        for(int i=0;i<len;i++)
+        {
+            if(x[i]=='(' || x[i]=='{' || x[i]=='[')
+            {
+                st.push(x[i]);
+            }
+            else if(x[i]==')')
+            {
+                if(!st.empty() && st.top()=='(')
+                    st.pop();
+                else
+                {
+                    return false;
+                  //  break;
+                }
+            }
+             else if(x[i]=='}')
+            {
+                if(!st.empty() && st.top()=='{')
+                    st.pop();
+                else
+                {
+                    return false;
+                   // break;
+                }
+            }
+             else if(x[i]==']')
+            {
+                if(!st.empty() && st.top()=='[')
+                    st.pop();
+                else
+                {
+                    return false;
+                  //  break;
+                }
+            }
+        }
+        if(st.empty())
+            return true;
+        else
+            return false;
+    } 
