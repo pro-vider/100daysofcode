@@ -1,0 +1,85 @@
+https://practice.geeksforgeeks.org/problems/infix-to-postfix-1587115620/1/?track=dsa-workshop-1-stack&batchId=308#
+
+bool isOperator(char c)
+    {
+     	if(c=='+'||c=='-'||c=='*'||c=='/'||c=='^')
+	        return true;
+	    else
+	        return false;
+	}
+    int precedence(char c) 
+    { 
+        if(c == '^') 
+            return 3; 
+        else if(c == '*' || c == '/') 
+            return 2; 
+        else if(c == '+' || c == '-') 
+            return 1; 
+        else
+            return -1; 
+    } 
+
+    string infixToPostfix(string s)
+    {
+        // Your code here
+        string p;
+        stack <int> st;
+        for(int i=0;i<s.length();i++)
+        {
+            if((s[i] >= 'a' && s[i] <= 'z')||(s[i] >= 'A' && s[i] <= 'Z'))
+		    {
+	            p+=s[i];
+		    }
+		    else if(s[i]=='(')
+		    {
+		        st.push(s[i]);
+		    }
+		    else if(s[i] == ')')
+		    {
+			     while((st.top()!='(') && (!st.empty()))
+		    	{
+			    	char temp=st.top();
+			    	p+=temp;
+			    	st.pop();
+			    }
+		     	if(st.top()=='(')
+		    	{
+			    	st.pop();
+			    }
+		    }
+		    else if(isOperator(s[i]))
+		    {
+		     	if(st.empty())
+		     	{
+			    	st.push(s[i]);
+			    }
+		    	else
+		    	{
+			    	if(precedence(s[i])>precedence(st.top()))
+				    {
+					   st.push(s[i]);
+			    	}	
+				    else if((precedence(s[i])==precedence(st.top()))&&(s[i]=='^'))
+			     	{
+				    	st.push(s[i]);
+			     	}
+			    	else
+			    	{
+				    	while((!st.empty())&&( precedence(s[i])<=precedence(st.top())))
+					    {
+						    p+=st.top();
+					     	st.pop();
+				     	}
+					   st.push(s[i]);
+			    	}
+			    }
+		    }
+     	}
+	while(!st.empty())
+	{
+		p+=st.top();
+		st.pop();
+	}
+	
+	return p;
+}
