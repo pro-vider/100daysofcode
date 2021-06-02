@@ -1,0 +1,15 @@
+https://practice.geeksforgeeks.org/problems/jump-game/1/?track=md-arrays&batchId=144#
+
+int canReach(int A[], int N) {
+        // code here
+       int x = A[0], i;
+        for(i = 1;i < N; i++){
+            if(x<1)
+                return 0;
+            if(A[i] >= x)
+                x = A[i];
+            else
+                x--;
+        }
+        return 1;
+    }
