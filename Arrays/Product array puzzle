@@ -1,0 +1,30 @@
+https://practice.geeksforgeeks.org/problems/product-array-puzzle4525/1/?track=md-arrays&batchId=144#
+
+vector<long long int> productExceptSelf(vector<long long int>& nums, int n) {
+       
+        //code here  
+        vector<long long int> res;
+        
+        if(n==1)
+          {
+              return{1};
+          }
+        long long int mul=1;
+        for(int i=0;i<n;i++)
+        {
+            mul*=nums[i];
+            res.push_back(mul);
+        }
+        //cout<<mul;
+        res[n-1]=res[n-2];
+        mul=nums[n-1];
+        for(int i=n-2;i>=1;i--)
+        {
+         res[i]=mul*res[i-1];
+         mul=mul*nums[i];
+        }
+        res[0]=mul;
+        return res;
+        
+        
+    }
