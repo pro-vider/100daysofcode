@@ -1,0 +1,21 @@
+https://practice.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1/?category[]=sliding-window&category[]=sliding-window&page=1&query=category[]sliding-windowpage1category[]sliding-window
+
+int maximumSumSubarray(int K, vector<int> &Arr , int N){
+        // code here 
+        int i=0,j=0,sum=0;
+        int max1=INT_MIN;
+        while(j<N)
+        {
+            sum+=Arr[j];
+            if(j-i+1<K)
+               j++;
+            else if(j-i+1==K)
+            {
+                max1=max(max1,sum);
+                sum-=Arr[i];
+                i++;
+                j++;
+            }
+        }
+        return max1;
+    }
