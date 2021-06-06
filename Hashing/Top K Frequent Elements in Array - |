@@ -1,0 +1,21 @@
+https://practice.geeksforgeeks.org/problems/top-k-frequent-elements-in-array/1/?track=dsa-workshop-1-hashing&batchId=308#
+
+vector<int> topK(vector<int>& nums, int k) {
+        // Code here
+        unordered_map<int,int>mp;
+        for(auto val:nums)
+           mp[val]++;
+        vector<pair<int,int>> ar;
+        for(auto x:mp){
+            ar.push_back(make_pair(x.second,x.first));
+        }
+        sort(ar.rbegin(),ar.rend());
+        int i=0;
+        vector<int> ans;
+        while(k--)
+        {
+            ans.push_back(ar[i].second);
+            i++;
+        }
+        return ans;
+    }
