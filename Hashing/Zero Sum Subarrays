@@ -1,0 +1,16 @@
+https://practice.geeksforgeeks.org/problems/zero-sum-subarrays1825/1/?track=dsa-workshop-1-hashing&batchId=308#
+
+ll findSubarray(vector<ll> arr, int n ) {
+        //code here
+        long long int s=0,count=0;
+        unordered_map<ll,ll> mp;
+        for(int i=0;i<n;i++)
+        {
+            s+=arr[i];
+            if(s==0)
+               count++;
+            count=count+mp[s];
+            mp[s]++;
+        }
+        return count;
+    }
