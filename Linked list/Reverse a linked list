@@ -1,0 +1,18 @@
+https://practice.geeksforgeeks.org/problems/reverse-a-linked-list/1/?track=dsa-workshop-1-linkedlist&batchId=308#
+
+struct Node* reverseList(struct Node *head)
+    {
+        // code here
+        // return head of reversed list
+        Node * prev=NULL,*curr=head,*Next;
+        if(head->next==NULL)
+           return head;
+        while(curr)
+        {
+            Next=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=Next;
+        }
+        return prev;
+    }
