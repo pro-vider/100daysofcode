@@ -1,0 +1,16 @@
+https://practice.geeksforgeeks.org/problems/occurence-of-an-integer-in-a-linked-list/0/?track=dsa-workshop-1-linkedlist&batchId=308#
+
+int count(struct node* head, int k)
+    {
+    //add your code here
+    int count=0;
+    node *temp;
+    temp=head;
+    while(temp!=NULL)
+    {
+        if(temp->data==k)
+            count++;
+        temp=temp->next;    
+    }
+    return count;
+    }
