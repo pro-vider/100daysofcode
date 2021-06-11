@@ -1,0 +1,15 @@
+https://practice.geeksforgeeks.org/problems/pairwise-swap-elements-of-a-linked-list-by-swapping-data/0/?track=dsa-workshop-1-linkedlist&batchId=308
+
+    Node* pairWiseSwap(struct Node* head)
+{
+    if(head == NULL || head->next == NULL)
+        return head;
+    Node * curr = head->next;
+    Node * prev = head;
+
+    prev->next = curr->next;
+    curr->next = prev;
+    prev->next = pairWiseSwap(prev->next);
+    return curr;
+
+}
