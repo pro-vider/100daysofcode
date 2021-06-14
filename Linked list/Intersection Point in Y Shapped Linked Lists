@@ -1,0 +1,52 @@
+https://practice.geeksforgeeks.org/problems/intersection-point-in-y-shapped-linked-lists/0/?track=dsa-workshop-1-linkedlist&batchId=308
+
+int intersectPoint(Node* head1, Node* head2)
+{
+    // Your Code Here
+    Node* temp;
+    temp=head1;
+    int c1=1,c2=1;
+    if(head1==NULL || head2==NULL)
+    {
+       return -1;
+    }
+    while(temp->next!=NULL)
+    {
+        c1++;
+        temp=temp->next;
+    }
+    temp=head2;
+    while(temp->next!=NULL)
+    {
+        c2++;
+        temp=temp->next;
+    }
+    int f=abs(c1-c2);
+    
+    Node *one=head1;
+    Node *two=head2;
+    if(c1>c2)
+    {
+        while(f--)
+        {
+            one=one->next;
+        }
+    }
+    
+    else{
+        while(f--)
+        {
+            two=two->next;
+        }
+    }
+    while(one!=NULL && two!=NULL)
+    {
+        if(one==two)
+        {
+            return one->data;
+        }
+        one=one->next;
+        two=two->next;
+    }
+    return -1;
+}
