@@ -1,0 +1,50 @@
+https://practice.geeksforgeeks.org/problems/sorted-insert-for-circular-linked-list/0/?track=dsa-workshop-1-linkedlist&batchId=308
+
+Node *sortedInsert(Node* head, int data)
+{
+    if(head == NULL)
+    {
+        head = new Node(data);
+        
+        head = head->next;
+        
+        return head;
+    }
+    
+    if(data <= head->data)
+    {
+        Node *tail = head;
+        Node *curr = head->next;
+        
+        while(curr != head)
+        {
+            tail = curr;
+            curr = curr->next;
+        }
+        
+        Node *temp = new Node(data);
+        
+        temp->next = head;
+        tail->next = temp;
+        head = temp;
+        
+        return head;
+    }
+    
+    Node *curr = head, *prev = head;
+    while(curr->next != head)
+    {
+        if(data <= curr->data)
+        {
+            Node *temp = new Node(data);
+            
+            prev->next = temp;
+            temp->next = curr;
+            
+            return head;
+        }
+        
+        prev = curr;
+        curr = curr->next;
+    }
+}
