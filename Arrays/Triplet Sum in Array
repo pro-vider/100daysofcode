@@ -1,0 +1,32 @@
+https://practice.geeksforgeeks.org/problems/triplet-sum-in-array-1587115621/1/?category[]=two-pointer-algorithm&category[]=two-pointer-algorithm&problemStatus=unsolved&page=1&query=category[]two-pointer-algorithmproblemStatusunsolvedpage1category[]two-pointer-algorithm#
+
+bool find3Numbers(int A[], int n, int X)
+    {
+        //Your Code Here
+        sort(A,A+n);
+        
+        for(int i=0;i<n;i++)
+        { 
+            int j=i+1;
+            int k=n-1;
+            int ls=X-A[i];
+            while(j<k)
+            {
+                if(A[j]+A[k]>ls)
+                {
+                    k--;
+                }
+                else if(A[j]+A[k]<ls)
+                {
+                    j++;
+                }
+                else
+                {
+                    return true;
+                }
+                
+            }
+            
+        }
+        return false;
+    }
