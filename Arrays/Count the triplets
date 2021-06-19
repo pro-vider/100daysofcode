@@ -1,0 +1,31 @@
+https://practice.geeksforgeeks.org/problems/count-the-triplets4615/1/?category[]=two-pointer-algorithm&category[]=two-pointer-algorithm&problemStatus=unsolved&page=1&query=category[]two-pointer-algorithmproblemStatusunsolvedpage1category[]two-pointer-algorithm
+
+int countTriplet(int arr[], int n)
+	{
+	    // Your code goes here
+	    int count=0;
+	    sort(arr,arr+n);
+	    for(int i=n-1;i>=2;i--)
+	    {
+	        int j=0;
+	        int k=i-1;
+	        while(j<k)
+	        {
+	            if(arr[j]+arr[k]>arr[i])
+	            {
+	                k--;
+	            }
+	            else if(arr[j]+arr[k]<arr[i])
+	            {
+	                j++;
+	            }
+	            else
+	            {
+	                count++;
+	                j++;
+	                k--;
+	            }
+	        }
+	    }
+	    return count;
+	}
