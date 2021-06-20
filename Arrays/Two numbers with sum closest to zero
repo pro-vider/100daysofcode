@@ -1,0 +1,33 @@
+https://practice.geeksforgeeks.org/problems/two-numbers-with-sum-closest-to-zero1737/1/?category[]=two-pointer-algorithm&category[]=two-pointer-algorithm&problemStatus=unsolved&page=1&query=category[]two-pointer-algorithmproblemStatusunsolvedpage1category[]two-pointer-algorithm#
+
+ int closestToZero(int arr[], int n)
+        {
+            // your code here 
+          int  m=INT_MAX;
+          int res;
+            sort(arr,arr+n);
+            int i=0;
+            int j=n-1;
+            while(i<j)
+            {
+               int sum=(arr[i]+arr[j]);
+               if(abs(sum)<m)
+               {
+                   m=abs(sum);
+                   res=sum;
+                   
+               }
+               else if(abs(sum)==m)
+               {
+                   res=max(res,sum);
+               }
+               
+                if(arr[i]+arr[j]<0)
+                    i++;
+                else if (arr[i]+arr[j]>0)
+                    j--;
+                else
+                   return 0;
+            }
+            return res;
+        }
