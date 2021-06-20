@@ -1,0 +1,18 @@
+https://practice.geeksforgeeks.org/problems/count-of-subarrays5922/1
+
+  ll countSubarray(int arr[], int n, int k) 
+{
+    long long count=0;
+	long long res=0;
+	for(int i=n-1;i>=0;i--)
+	{
+	   if(arr[i]>k)
+	   {
+	        count=n-i;
+	        res+=(n-i);
+	   }
+	   else
+	   res+=count;
+    }
+	return res;
+}
