@@ -1,0 +1,21 @@
+https://practice.geeksforgeeks.org/problems/length-of-longest-subarray0440/1/?category[]=two-pointer-algorithm&category[]=two-pointer-algorithm&problemStatus=unsolved&page=1&query=category[]two-pointer-algorithmproblemStatusunsolvedpage1category[]two-pointer-algorithm
+
+#define ll long long
+long long int longestSubarry(long long int A[], long long int N) {
+    
+    ll i=0,max1=0,count=0;
+    for(i=0;i<N;i++)
+    {
+        if(A[i]>=0)
+        {
+            count++;
+        }
+        else
+        {
+            max1=max(max1,count);
+            count=0;
+        }
+    }
+    max1=max(max1,count);
+    return max1;
+}
