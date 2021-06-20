@@ -1,0 +1,25 @@
+https://practice.geeksforgeeks.org/problems/string-palindromic-ignoring-spaces4723/1/?category[]=two-pointer-algorithm&category[]=two-pointer-algorithm&problemStatus=unsolved&page=1&query=category[]two-pointer-algorithmproblemStatusunsolvedpage1category[]two-pointer-algorithm
+
+	bool sentencePalindrome(string s) 
+	{
+	    // code here 
+	    int j=s.size()-1;
+	    int i=0;
+	    while(i<j)
+	    {
+	        if(!isalpha(s[i]))
+	           i++;
+	        else if(!isalpha(s[j]))
+	           j--;
+	        else if(s[i]==s[j])
+	        {
+	            i++;
+	            j--;
+	        }
+	        else
+	        {
+	            return 0;
+	        }
+	    }
+	    return 1;
+	}
