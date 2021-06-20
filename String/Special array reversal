@@ -1,0 +1,26 @@
+https://practice.geeksforgeeks.org/problems/special-array-reversal2328/1/?category[]=two-pointer-algorithm&category[]=two-pointer-algorithm&problemStatus=unsolved&page=1&query=category[]two-pointer-algorithmproblemStatusunsolvedpage1category[]two-pointer-algorithm
+
+string reverse(string str)
+    { 
+        //code here.
+        int st=0;
+        int end=str.size()-1;
+        while(st<end)
+        {
+            while(st<str.size() and !isalpha(str[st]))
+            {
+                st++;
+            }
+             while(end>=0 and !isalpha(str[end]))
+            {
+                end--;
+            }
+            if(st<end)
+            {
+                swap(str[st],str[end]);
+            }
+            st++;
+            end--;
+        }
+        return str;
+    } 
