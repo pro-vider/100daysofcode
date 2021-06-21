@@ -1,0 +1,31 @@
+https://practice.geeksforgeeks.org/problems/count-occurences-of-anagrams5839/1/?category[]=sliding-window&category[]=sliding-window&problemStatus=unsolved&page=1&query=category[]sliding-windowproblemStatusunsolvedpage1category[]sliding-window
+
+ int search(string pat, string txt) 
+	{
+	    vector<int>count_pat(26,0),count_txt(26,0);
+	    int count=0;
+	    for(int i=0;i<pat.length();i++)
+	    {
+	        count_pat[pat[i]-'a']++;
+	    }
+	    for(int i=0;i<pat.length();i++)
+	    {
+	        count_txt[txt[i]-'a']++;
+	    }
+	    int i=0,j=pat.length()-1,n=txt.length();
+	    while(i<n && j<n)
+	    {
+	        if(count_txt==count_pat)
+	        {
+	            count++;
+	        }
+	        count_txt[txt[i]-'a']--;
+	        if(j+1<n)
+	        {
+	            count_txt[txt[j+1]-'a']++;
+	            j++;
+	        }
+	        i++;
+	    }
+	    return count;
+	}
