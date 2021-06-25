@@ -1,0 +1,55 @@
+https://practice.geeksforgeeks.org/problems/equivalent-sub-arrays3731/1/?category[]=sliding-window&category[]=sliding-window&problemStatus=unsolved&page=1&query=category[]sliding-windowproblemStatusunsolvedpage1category[]sliding-window#
+
+     int helper(int nums[],int n,int k)
+    {
+        unordered_map<int,int>m;
+        int count=0,i=0;
+        for(int j=0;j<n;j++)
+        {
+            m[nums[j]]++;
+            while(i<=j && m.size()>k)
+            {
+                if(m[nums[i]]==1)
+                {
+                    m.erase(nums[i]);
+                }
+                else
+                {
+                    m[nums[i]]--;
+                }
+                i++;
+            }
+            count+=(j-i+1);
+        }
+        return count;
+    }
+    int countDistinctSubarray(int arr[], int n)
+    {
+        //code here
+        
+        unordered_map<int,int> mp,mpf;
+        for(int i=0;i<n;i++)
+        {
+            mp[arr[i]]++;
+        }
+        int k=mp.size();
+        // int i=0,j=0,count=0;
+        // while(j<n)
+        // {
+        //     mpf[arr[j]]++;
+        //     if(mp.size()>mpf.size())
+        //         j++;
+        //     else if(mp.size()==mpf.size())
+        //     {
+        //         count+=n-j;
+        //       // return count;
+        //         mpf[arr[i]]--;
+        //         if(mpf[arr[i]]==0)
+        //             mpf.erase(arr[i]);
+        //         i++;    
+        //     }
+        // }
+        return helper(arr,n,k)-helper(arr,n,k-1);
+        
+        
+    }
