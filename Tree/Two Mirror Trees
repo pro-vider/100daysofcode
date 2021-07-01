@@ -1,0 +1,10 @@
+https://practice.geeksforgeeks.org/problems/two-mirror-trees/1/?track=dsa-workshop-1-trees&batchId=308
+
+  int areMirror(Node* a, Node* b) {
+    // Your code here
+        if(a==nullptr && b==nullptr)
+            return 1;
+        if(a->data!=b->data)
+            return 0;
+        return (areMirror(a->left,b->right) && areMirror(a->right,b->left));    
+    }
