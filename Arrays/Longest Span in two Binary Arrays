@@ -1,0 +1,23 @@
+https://practice.geeksforgeeks.org/problems/longest-span-with-same-sum-in-two-binary-arrays5142/1/?category[]=prefix-sum&category[]=prefix-sum&problemStatus=unsolved&page=1&query=category[]prefix-sumproblemStatusunsolvedpage1category[]prefix-sum
+
+//Arrays Prefix-sum Sliding-window
+
+  int longestCommonSum(bool arr1[], bool arr2[], int n) {
+            // code here 
+            unordered_map<int,int> mp;
+            int sum=0;
+            int maxi=0;
+            for(int i=0;i<n;i++)
+            {
+                sum+=(arr1[i]-arr2[i]);
+                if(sum==0)
+                   maxi=i+1;
+                if(mp.find(sum)==mp.end())
+                   mp[sum]=i;
+                else if(mp.find(sum)!=mp.end())
+                   maxi=max(maxi,i-mp[sum]);
+            }
+            return maxi;
+            
+    }
+};
