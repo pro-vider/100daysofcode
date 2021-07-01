@@ -3,14 +3,16 @@ https://practice.geeksforgeeks.org/problems/kadanes-algorithm-1587115620/0/?trac
   int maxSubarraySum(int arr[], int n){
         
         // Your code here
-    int tillnow = arr[0];
-    int curr = arr[0];
-
-   for (int i = 1; i < n; i++)
-   {
-       curr = max(arr[i], curr+arr[i]);
-       tillnow = max(tillnow, curr);
-    }
-    return tillnow;
+       int curr=0;
+       int maxi=INT_MIN;
+       for(int i=0;i<n;i++)
+       {
+           curr+=arr[i];
+           maxi=max(curr,maxi);
+           if(curr<0)
+              curr=0;
+           
+       }
+       return maxi;
         
     }
