@@ -1,0 +1,25 @@
+https://practice.geeksforgeeks.org/problems/sum-tree/0/?track=dsa-workshop-1-trees&batchId=308
+
+ int sum(Node* root,bool *r)
+    {
+        if(root==NULL)
+           return 0;
+        if(!root->left && !root->right)
+           return root->data;
+        else
+        {
+            int ls=sum(root->left,r);
+            int rs=sum(root->right,r);
+            if(root->data!=(ls+rs))
+                *r=false;
+            return(root->data+ls+rs);    
+        }
+    }
+    bool isSumTree(Node* root)
+    {
+         // Your code here
+        bool ans=true;
+        sum(root,&ans);
+        return ans;
+           
+    }
