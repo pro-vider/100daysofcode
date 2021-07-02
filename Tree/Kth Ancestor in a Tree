@@ -1,0 +1,32 @@
+https://practice.geeksforgeeks.org/problems/kth-ancestor-in-a-tree/0/?track=dsa-workshop-1-trees&batchId=308
+
+void fun(Node* root, int target, int& k , int& check, int& res)
+{
+        if(!root)
+        return;
+        
+        if(root->data== target)
+        {
+            check=1;
+            return;
+        }
+        
+        fun(root->left, target, k, check, res);
+        if(check==0)
+        fun(root->right, target, k, check, res);
+        
+        if(check && k--)
+        {
+            if(k==0)
+            res=root->data;
+        }
+}
+
+// your task is to complete this function
+int kthAncestor(Node *root, int k, int node)
+{
+         int check=0,   res=-1;
+         fun(root, node, k, check, res);
+         
+         return res;
+}
