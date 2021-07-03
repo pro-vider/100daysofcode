@@ -1,5 +1,7 @@
 https://practice.geeksforgeeks.org/problems/zigzag-tree-traversal/0/?track=dsa-workshop-1-trees&batchId=308
 
+//using queue
+
 vector <int> zigZagTraversal(Node* root)
 {
 	// Code here
