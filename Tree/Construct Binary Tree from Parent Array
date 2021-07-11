@@ -1,0 +1,24 @@
+https://practice.geeksforgeeks.org/problems/construct-binary-tree-from-parent-array/0/?track=dsa-workshop-1-trees&batchId=308
+
+Node *createTree(int arr[], int n)
+{
+    // Your code here
+    vector<Node*> v;
+    for(int i=0;i<n;i++)
+    {
+        Node *temp= new Node(i);
+        v.push_back(temp);
+    }
+    int root;
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i]==-1)  root=i;
+        if(arr[i]!=-1 && v[arr[i]]->left==NULL)
+            v[arr[i]]->left=v[i];
+        else if(arr[i]!=-1 && v[arr[i]]->right==NULL)
+            v[arr[i]]->right=v[i];
+    }
+    
+    return v[root];
+    
+}
