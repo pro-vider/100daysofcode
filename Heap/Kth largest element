@@ -1,0 +1,21 @@
+https://practice.geeksforgeeks.org/problems/kth-largest-element5034/0/?track=dsa-workshop-1-heap&batchId=308
+
+ 
+    int KthLargest(int arr[], int n, int k) {
+        // Your code here
+        priority_queue<int, vector<int>, greater<int> > minh;
+        for (int i = 0; i < n; i++)
+        {
+            if (minh.size() == k && minh.top() < arr[i])
+            {
+                minh.pop();
+                minh.push(arr[i]);
+            }
+            else if(minh.size() < k)
+                minh.push(arr[i]);
+        }
+
+return minh.top();
+
+        
+    }
