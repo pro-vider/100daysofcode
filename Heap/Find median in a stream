@@ -1,0 +1,46 @@
+https://practice.geeksforgeeks.org/problems/find-median-in-a-stream-1587115620/0/?track=dsa-workshop-1-heap&batchId=308#
+
+priority_queue<int>maxh;
+priority_queue<int,vector<int>,greater<int> > minh;
+void insertHeap(int &x)
+    {
+        if(maxh.empty()==true)
+        {
+            maxh.push(x);
+            return;
+        }
+        if(maxh.size()>minh.size())
+        {
+            if(maxh.top()>x)
+            {
+                minh.push(maxh.top());
+                maxh.pop();
+                maxh.push(x);
+            }
+            else
+                minh.push(x);
+        }
+        else
+        {
+            if(x<maxh.top())
+               maxh.push(x);
+            else
+            {
+               minh.push(x);
+               maxh.push(minh.top());
+               minh.pop();
+            }   
+        }
+        
+    } 
+     double getMedian()
+    {
+        if(maxh.size()>minh.size())
+        {
+            return maxh.top();
+        }
+        else
+        {
+            return (maxh.top()+minh.top())/2.0;
+        }
+    }
