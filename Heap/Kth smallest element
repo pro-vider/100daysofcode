@@ -1,0 +1,13 @@
+https://practice.geeksforgeeks.org/problems/kth-smallest-element5635/1/?category[]=Arrays&category[]=Arrays&problemStatus=unsolved&difficulty[]=0&difficulty[]=1&difficulty[]=2&page=1&sortBy=submissions&query=category[]ArraysproblemStatusunsolveddifficulty[]0difficulty[]1difficulty[]2page1sortBysubmissionscategory[]Arrays#
+
+int kthSmallest(int arr[], int l, int r, int k) {
+        //code here
+        priority_queue<int> maxh;
+        for(int i=l;i<=r;i++)
+        {
+            maxh.push(arr[i]);
+            if(maxh.size()>k)
+                maxh.pop();
+        }
+        return maxh.top();
+    }
