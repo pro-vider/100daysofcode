@@ -1,0 +1,36 @@
+https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1/?track=dsa-workshop-1-graph&batchId=308#
+
+bool solve(int src,vector<int> &vis,vector<int> &order,vector<int> g[])
+	{
+	    vis[src]=1;
+	    order[src]=1;
+	    for(auto r :g[src])
+	    {
+	        if(!vis[r])
+	        {
+	            bool res=solve(r,vis,order,g);
+	            if(res==true)
+	               return true;
+	        }
+	        else if(order[r])
+	           return true;
+	    }
+	    order[src]=0;
+	       return false;
+	}
+	bool isCyclic(int V, vector<int> adj[]) 
+	{
+	   	// code here
+	   	vector<int> vis(V,0);
+	   	vector<int> order(V,0);
+	   	for(int i=0;i<V;i++)
+	   	{
+	   	    if(!vis[i])
+	   	    {
+	   	        bool x=solve(i,vis,order,adj);
+	   	        if(x==true)
+	   	            return true;
+	   	    }
+	   	}
+	   	return false;
+	}
