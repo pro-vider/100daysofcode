@@ -1,0 +1,32 @@
+https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1/?track=dsa-workshop-1-graph&batchId=308
+
+bool solve(int src,int par,vector<int>adj[],vector<bool> &vis)
+    {
+        vis[src]=true;
+        for(auto x:adj[src])
+        {
+            if(!vis[x])
+            {
+                if(solve(x,src,adj,vis))
+                    return true;
+            }
+            else if(x!=par)
+                return true;
+        }
+        return false;
+    }
+	bool isCycle(int V, vector<int>adj[])
+	{
+	    // Code here
+	    vector<bool> vis(V,false);
+	    for(int i=0;i<V;i++)
+	    {
+	        if(!vis[i])
+	        {
+	           bool x=solve(i,-1,adj,vis);
+	           if(x==true) return true;
+	        }
+	           
+	    }
+	    return false;
+	}
