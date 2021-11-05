@@ -1,0 +1,34 @@
+https://practice.geeksforgeeks.org/problems/rod-cutting0840/1#
+
+int max(int a, int b)
+    {
+         return (a>b) ? a:b;
+    }
+    int cutRod(int price[], int n) {
+        //code here
+        int length[n];
+        for (int i = 0; i < n; i++) 
+            length[i] = i + 1;
+        int maxi=n;
+        return unbounded_kp(price, length, n, maxi); 
+    }
+    int unbounded_kp(int price[], int length[], int n, int maxi)
+    {
+        int dp[n+1][maxi+1];
+        for(int i=0;i<=n;i++)dp[i][0] = 0;
+        for(int i=0;i<=maxi;i++)dp[0][i] = 0;
+        
+        for(int i=1;i<=n;i++)
+        {
+            for(int j=1;j<=maxi;j++)
+            {
+                if(j>=length[i-1])
+                    dp[i][j]=max(price[i-1]+dp[i][j-length[i-1]],dp[i-1][j]);
+                else
+                    dp[i][j]=dp[i-1][j];
+                
+            }
+        }
+        return dp[n][maxi];
+           
+    }
